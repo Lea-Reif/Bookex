@@ -28,6 +28,8 @@ languageServer/**
 languageServer.*/**
 bin/**
 obj/**
+build/
+dist/
 .pytest_cache
 tmp/**
 .python-version
