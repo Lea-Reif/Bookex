@@ -1,4 +1,8 @@
-import os,xlsxwriter,re,json,sys
+import os
+import xlsxwriter
+import re
+import sys
+
 username = os.getlogin()    # Fetch username
 desktopPath = f'C:\\Users\\{username}\\Desktop\\'+"Libro de Ventas.xlsx"
 done = False
@@ -11,9 +15,11 @@ lines = {
 if os.path.exists(desktopPath):
     os.remove(desktopPath)
 
+# Fetch and converting data from line to array
 def arrayLine(val):
     return [x for x in val.split('|') if x and x!= "\n"]
 
+# Generating book with dict data
 def generateBook(obj):
     workbook = xlsxwriter.Workbook(os.path.normpath(desktopPath))
     for key in obj:
@@ -51,6 +57,7 @@ while not done:
                     continue
             generateBook(lines)
             print('Archivo generado con exito en la ruta:',desktopPath+' !!!!')
+            input("Presione cualquier tecla para salir.")
             exit()
         except (IOError, EOFError) : 
             print('Error al leer el archivo.')
